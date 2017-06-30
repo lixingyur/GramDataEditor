@@ -1,0 +1,25 @@
+.buttonGroup {
+    display:block; /* change this from inline-block */
+    width:20%; /* setting the width */
+    margin:0 auto; /* this will center  it */
+    position:relative;
+    font-style:normal;
+    font-weight:normal;
+    font-family:"Open Sa ns";
+    font-size:14px;
+    outline:none;
+    color:#fff;
+    border:none;
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+
+}
+
+.edit-button {
+    width:70px;
+    margin-left: 50%;
+}
