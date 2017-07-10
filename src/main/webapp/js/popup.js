@@ -14,11 +14,26 @@ var GramDataPopup = new function () {
       _this.close(this);
       e.preventDefault();
     });
+
+    //----- SAVE
     $('#save-btn').click(function (e) {
-      alert("saved to " + _this.filePath);
-      _this.close(this);
+      var data = {
+        path: this.filePath,
+        content: $("#editWindow").val()
+      }
+      $.ajax({
+        url: 'http://localhost:8082/data/save',
+        type: 'POST',
+        dataType: 'json',
+        data: data
+      }).done(function(result) {
+        alert("Successfully saved!");
+        _this.close(this);
+      });
       e.preventDefault();
     });
+
+
     $('#close-btn').click(function (e) {
       alert("closed");
       _this.close(this);

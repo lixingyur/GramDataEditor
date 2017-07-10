@@ -25,7 +25,7 @@ var GramDataTreeView = new function () {
             this.displayData = data.replace(/(?:\r\n|\r|\n)/g, "<br>");
             GramDataPanel.updateView(this.displayData);
             GramDataPopup.editData = this.editData;
-            GramDataPopup.filePath = this.url;
+            GramDataPopup.filePath = file;
             GramDataNav.displayData = this.displayData;
             GramDataNav.filePath = this.url;
           })
