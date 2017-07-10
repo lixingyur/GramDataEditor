@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
+
   @RequestMapping("/helloJsp")
-  public String helloJsp(Map<String,Object> map){
+  public String helloJsp(Map<String, Object> map) {
     map.put("hello", "asdfasd");
     return "helloJsp";
   }

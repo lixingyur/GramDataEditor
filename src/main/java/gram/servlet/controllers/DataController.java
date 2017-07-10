@@ -22,16 +22,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/data")
 public class DataController {
+
   static String readFile(String filePath) throws IOException {
     FileInputStream inputStream = null;
     Scanner sc = null;
     StringBuilder stringBuilder = new StringBuilder();
     try {
       inputStream = new FileInputStream(filePath);
-      sc = new Scanner(inputStream, "UTF-8");
+      sc = new Scanner(inputStream, "GBK");
       while (sc.hasNextLine()) {
         String line = sc.nextLine();
-        stringBuilder.append(line+'\n');
+        stringBuilder.append(line + '\n');
       }
       // note that Scanner suppresses exceptions
       if (sc.ioException() != null) {
@@ -51,11 +52,17 @@ public class DataController {
     }
     return stringBuilder.toString();
   }
+
   @RequestMapping(value = "/get", method = RequestMethod.GET)
   String getData(HttpServletResponse response,
       @RequestParam(value = "filePath") String filePath) throws IOException {
     return readFile(filePath);
   }
 
+  @RequestMapping(value = "/save", method = RequestMethod.POST)
+  String saveData(HttpServletResponse response,
+      @RequestParam(value = "filePath") String filePath) throws IOException {
+    return readFile(filePath);
+  }
 }
 

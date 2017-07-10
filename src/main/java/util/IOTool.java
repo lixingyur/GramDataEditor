@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class IOTool {
+
   public static String read(String path) throws IOException {
     StringBuilder content = new StringBuilder();
     FileInputStream inputStream = null;
@@ -45,7 +46,7 @@ public class IOTool {
   }
 
   public static void main(String[] args) throws IOException {
-    String a = read("src/main/webapp/jqueryFileTree.jsp" );
+    String a = read("src/main/webapp/jqueryFileTree.jsp");
     System.out.println(a);
   }
 }

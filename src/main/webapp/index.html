@@ -2,60 +2,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-    <title>Gram Data Editor</title>
+  <title>Gram Data Editor</title>
 
-    <link type="text/css" rel="stylesheet" href="css/vendor/layout-default-latest.css" />
-    <link type="text/css" rel="stylesheet" href="css/vendor/jqueryFileTree.css" />
-    <link type="text/css" rel="stylesheet" href="css/vendor/w3.css" />
-    <link type="text/css" rel="stylesheet" href="css/vendor/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link type="text/css" rel="stylesheet" href="css/load.css" />
-    <link type="text/css" rel="stylesheet" href="css/popup.css" />
+  <link type="text/css" rel="stylesheet" href="css/vendor/layout-default-latest.css"/>
+  <link type="text/css" rel="stylesheet" href="css/vendor/jqueryFileTree.css"/>
+  <link type="text/css" rel="stylesheet" href="css/vendor/w3.css"/>
+  <link type="text/css" rel="stylesheet" href="css/vendor/bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" href="css/main.css"/>
+  <link type="text/css" rel="stylesheet" href="css/load.css"/>
+  <link type="text/css" rel="stylesheet" href="css/popup.css"/>
 
 
-    <script type="text/javascript" src="js/vendor/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="js/vendor/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/vendor/jquery.layout-latest.js"></script>
-    <script type="text/javascript" src="js/vendor/jqueryFileTree.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/popup.js"></script>
-    <script type="text/javascript" src="js/dataEditor.js"></script>
-    <script type="text/javascript" src="js/treeView.js"></script>
-    <script type="text/javascript" src="js/panel.js"></script>
-    <script type="text/javascript" src="js/Nav.js"></script>
+  <script type="text/javascript" src="js/vendor/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="js/vendor/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/vendor/jquery.layout-latest.js"></script>
+  <script type="text/javascript" src="js/vendor/jqueryFileTree.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/popup.js"></script>
+  <script type="text/javascript" src="js/dataEditor.js"></script>
+  <script type="text/javascript" src="js/treeView.js"></script>
+  <script type="text/javascript" src="js/panel.js"></script>
+  <script type="text/javascript" src="js/Nav.js"></script>
 </head>
 <body>
 <!--navigation bar at the top-->
 <div class="ui-layout-north">
-    <button class="edit-button btn btn-primary btn-md" data-popup-open="popup-1">Edit</button>
+  <button class="edit-button btn btn-primary btn-md" data-popup-open="popup-1">Edit</button>
 </div>
 
 <!--data directory tree view at left-->
 <div class="ui-layout-west">
-	<div id="treeview"></div>
+  <div id="treeview"></div>
 </div>
 
 <!--data viewer and editor at center-->
 <div class="ui-layout-center">
-	<div id="gram-data-editor">
-    </div>
+  <div id="gram-data-editor"></div>
 </div>
 
 <!--loading effect container-->
 <div class="loader-container">
-    <div class="loader"></div>
+  <div class="loader"></div>
 </div>
 
 <!--editor page-->
 <div class="popup" data-popup="popup-1">
-    <div class="popup-inner">
-        <textarea class="form-control data-input" rows="" cols=""></textarea>
-        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
-        <div class="btn-group">
-            <button id="save-btn" class=" btn btn-success" data-popup-close="popup-1">Save</button>
-            <button id="close-btn" class=" btn btn-danger" data-popup-close="popup-1">Close</button>
-        </div>
+  <div class="popup-inner">
+    <textarea class="form-control data-input" rows="" cols=""></textarea> <a class="popup-close"
+                                                                             data-popup-close="popup-1"
+                                                                             href="#">x</a>
+    <div class="btn-group">
+      <button id="save-btn" class=" btn btn-success" data-popup-close="popup-1">Save</button>
+      <button id="close-btn" class=" btn btn-danger" data-popup-close="popup-1">Close</button>
     </div>
+  </div>
 </div>
 </body>
 </html>

@@ -10,7 +10,6 @@ package gram.servlet.controllers;/*
  */
 
 
-
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -33,12 +32,12 @@ public class FileTreeController {
   String getDirectory(HttpServletResponse response,
       @RequestParam(value = "dir") String dir) throws IOException {
     StringBuilder htmlResult = new StringBuilder();
-    if(StringUtils.isEmpty(dir)) {
+    if (StringUtils.isEmpty(dir)) {
       return htmlResult.toString();
     }
-    if (dir.charAt(dir.length()-1) == '\\') {
-      dir = dir.substring(0, dir.length()-1) + "/";
-    } else if (dir.charAt(dir.length()-1) != '/') {
+    if (dir.charAt(dir.length() - 1) == '\\') {
+      dir = dir.substring(0, dir.length() - 1) + "/";
+    } else if (dir.charAt(dir.length() - 1) != '/') {
       dir += "/";
     }
 
@@ -55,8 +54,9 @@ public class FileTreeController {
       // All dirs
       for (String file : files) {
         if (new File(dir, file).isDirectory()) {
-          htmlResult.append("<li class=\"directory collapsed\"><a href=\"#\" rel=\"" + dir + file + "/\">"
-              + file + "</a></li>");
+          htmlResult
+              .append("<li class=\"directory collapsed\"><a href=\"#\" rel=\"" + dir + file + "/\">"
+                  + file + "</a></li>");
         }
       }
       // All files
@@ -64,8 +64,9 @@ public class FileTreeController {
         if (!new File(dir, file).isDirectory()) {
           int dotIndex = file.lastIndexOf('.');
           String ext = dotIndex > 0 ? file.substring(dotIndex + 1) : "";
-          htmlResult.append("<li class=\"file ext_" + ext + "\"><a href=\"#\" rel=\"" + dir + file + "\">"
-              + file + "</a></li>");
+          htmlResult
+              .append("<li class=\"file ext_" + ext + "\"><a href=\"#\" rel=\"" + dir + file + "\">"
+                  + file + "</a></li>");
         }
       }
       htmlResult.append("</ul>");
