@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GramDataEditor:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="gram-data-editor-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="GramDataEditor:war exploded" />
+    </root>
+  </artifact>
+</component>
