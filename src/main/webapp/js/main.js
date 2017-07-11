@@ -15,7 +15,6 @@ $(document).on({
 });
 
 $(document).on('keydown', function (e) {
-  console.log("esc");
   if (e.keyCode === 27) {
     var targeted_popup_class = $(".popup-close").attr('data-popup-close');
     $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);

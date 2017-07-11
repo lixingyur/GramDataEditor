@@ -3,6 +3,7 @@
  */
 var GramDataPanel = new function () {
   this.init = function () {
+    console.log("Panel init");
 
   };
   this.updateView = function (data) {

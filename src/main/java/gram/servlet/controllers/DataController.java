@@ -9,6 +9,8 @@ package gram.servlet.controllers;/*
  * @29/06/17.
  */
 
+import gram.servlet.utils.FileIO;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,73 +31,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/data")
 public class DataController {
 
-  static String readFile(String filePath) throws IOException {
-    FileInputStream inputStream = null;
-    Scanner sc = null;
-    StringBuilder stringBuilder = new StringBuilder();
-    try {
-      inputStream = new FileInputStream(filePath);
-      sc = new Scanner(inputStream, "GBK");
-      while (sc.hasNextLine()) {
-        String line = sc.nextLine();
-        stringBuilder.append(line + '\n');
-      }
-      // note that Scanner suppresses exceptions
-      if (sc.ioException() != null) {
-        throw sc.ioException();
-      }
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      if (inputStream != null) {
-        inputStream.close();
-      }
-      if (sc != null) {
-        sc.close();
-      }
-    }
-    return stringBuilder.toString();
-  }
-
-  static void writeFile(String filePath, String content) {
-    if(StringUtils.isEmpty(filePath) || StringUtils.isEmpty(content)) {
-      return;
-    }
-    File file = new File(filePath);
-
-    try (FileOutputStream fop = new FileOutputStream(file)) {
-
-      // if file doesn't exists, then create it
-      if (!file.exists()) {
-        file.createNewFile();
-      }
-
-      // get the content in bytes
-      byte[] contentBytes = content.getBytes();
-
-      fop.write(contentBytes);
-      fop.flush();
-      fop.close();
-
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
   @RequestMapping(value = "/get", method = RequestMethod.GET)
   String getData(HttpServletResponse response,
       @RequestParam(value = "filePath") String filePath) throws IOException {
-    return readFile(filePath);
+    return FileIO.readFile(filePath);
   }
 
   @RequestMapping(value = "/save", method = RequestMethod.POST)
-  void saveData(@RequestBody HashMap<String, String> request) throws IOException {
-    String filePath = request.get("path");
-    String content = request.get("content");
-    writeFile(filePath, content);
+  void saveData(@RequestBody String request) throws IOException {
+
+    JSONObject jsonObject = new JSONObject(request);
+    String filePath = jsonObject.isNull("path") ? "" : jsonObject.getString("path");
+    String content = jsonObject.isNull("content") ? "" : jsonObject.getString("content");
+    FileIO.writeFile(filePath, content);
+
   }
 }
 

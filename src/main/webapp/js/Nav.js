@@ -6,5 +6,6 @@ var GramDataNav = new function () {
   this.filePath = "";
   var _this = this;
   this.init = function () {
+    console.log("Nav init");
   }
 }

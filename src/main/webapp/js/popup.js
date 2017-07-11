@@ -3,6 +3,7 @@ var GramDataPopup = new function () {
   this.filePath = "";
   var _this = this;
   this.init = function () {
+
     $('[data-popup-open]').on('click', function (e) {
       _this.open(this);
       $(".data-input").val(_this.editData);
@@ -17,18 +18,23 @@ var GramDataPopup = new function () {
 
     //----- SAVE
     $('#save-btn').click(function (e) {
+      var input = $("#editWindow").val();
       var data = {
-        path: this.filePath,
-        content: $("#editWindow").val()
+        path: _this.filePath,
+        content: input
       }
       $.ajax({
         url: 'http://localhost:8082/data/save',
         type: 'POST',
-        dataType: 'json',
-        data: data
-      }).done(function(result) {
+        contentType: 'application/json',
+        data: JSON.stringify(data)
+      }).done(function() {
+        console.log("done");
         alert("Successfully saved!");
+        GramDataPanel.updateView(input.replace(/(?:\r\n|\r|\n)/g, "<br>"));
         _this.close(this);
+      }).fail(function(){
+        console.log("fail");
       });
       e.preventDefault();
     });
